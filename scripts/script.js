@@ -2,6 +2,7 @@
 
 const numberBlock = document.querySelector('.square-body')
 const childElemnt = numberBlock.querySelectorAll('.block')
+const btnReset = document.querySelector('.btn-reset')
 
 let prev = 0
 let next = 0
@@ -45,7 +46,15 @@ const getValue = (targetPanel, arrow) => {
     })
 }
 
+const resetRabbit = () => {
+    childElemnt.forEach((elem, index) => {
+        const blockText = elem.querySelector('.block-number')
 
+        blockText.textContent = index + 1
+    })
+}
+
+btnReset.addEventListener('click', resetRabbit)
 numberBlock.addEventListener('click', (e) => {
     if (e.target.closest('.block') && e.target.closest('.arrow')) {
         getValue(e.target.closest('.block'), e.target.closest('.arrow').classList[1])
